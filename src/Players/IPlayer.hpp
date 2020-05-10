@@ -17,6 +17,11 @@ public:
         name = _name;
     }
 
+    std::string GetName()
+    {
+        return name;
+    }
+
     void SetField(Field _field)
     {
         field = _field;
@@ -25,6 +30,11 @@ public:
     Field GetField()
     {
         return field;
+    }
+
+    std::string Info()
+    {
+        return name + " (" + FieldConverter::Convert(field) + ")\n";
     }
 
     virtual void Move(GameMap &map) = 0;

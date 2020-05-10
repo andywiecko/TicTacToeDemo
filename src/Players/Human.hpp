@@ -20,8 +20,6 @@ namespace Players
 
             while (true)
             {
-                Console::Clear();
-                map.Print();
                 Console::ReadLine("Select row: ", row);
                 Console::ReadLine("Select column: ", col);
                 if (map.SetField(field, row, col))
@@ -35,10 +33,6 @@ namespace Players
             SetName(_name);
         }
 
-        ~Human()
-        {
-            std::cout << "say good night!" << std::endl;
-        }
     };
 
 } // namespace Players

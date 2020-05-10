@@ -21,10 +21,6 @@ namespace Players
             SetField(_field);
         }
 
-        ~Computer()
-        {
-            std::cout << "going offline!" << std::endl;
-        }
     };
 
 } // namespace Players

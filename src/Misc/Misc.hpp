@@ -32,6 +32,11 @@ public:
     {
         std::cout << std::string(n, '\n');
     }
+
+    static void Line(size_t n = 20)
+    {
+        std::cout << std::string(n,'=') << std::endl;
+    }
 };
 
 #endif
