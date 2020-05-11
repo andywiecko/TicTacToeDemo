@@ -34,9 +34,14 @@ public:
         return false;
     }
 
-    static void Victory()
+    static void Victory(IPlayer * player)
     {
-        std::cout << "wygrał aaaa" << std::endl;
+        Console::Log("Winner: "+player->Info());
+    }
+
+    static void Draw()
+    {
+        Console::Log("Draw! There is no winner!");
     }
 };
 

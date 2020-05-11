@@ -17,6 +17,15 @@ void GameMap::Print()
     }
 }
 
+bool GameMap::IsFull()
+{
+    for (auto &fieldsRow : fields)
+        for (auto &field : fieldsRow)
+            if (field == Field::_) return false;
+
+    return true; // map does not contain Field::_
+}
+
 bool GameMap::SetField(Field field, size_t row, size_t col)
 {
     // TODO add bound check

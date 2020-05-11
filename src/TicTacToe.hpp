@@ -4,7 +4,7 @@
 #include "GameMap/GameMap.hpp"
 #include "GameController/GameController.hpp"
 #include "GameController/GameOver.hpp"
-#include "Misc/Misc.hpp"
+#include "Misc/Console.hpp"
 
 class TicTacToe
 {

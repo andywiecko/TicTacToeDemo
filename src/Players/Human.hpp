@@ -5,7 +5,7 @@
 
 #include "IPlayer.hpp"
 #include "../GameMap/GameMap.hpp"
-#include "../Misc/Misc.hpp"
+#include "../Misc/Console.hpp"
 
 namespace Players
 {
@@ -18,6 +18,7 @@ namespace Players
             size_t row, col;
             Field field{GetField()};
 
+            Console::Log(Info());
             while (true)
             {
                 Console::ReadLine("Select row: ", row);

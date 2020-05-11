@@ -14,21 +14,21 @@ void TicTacToe::ViewMap()
 
 void TicTacToe::GameLoop()
 {
-    while (not GameOver::End(map))
+    while (not GameOver::End(map) or not map.IsFull())
     {
         for (auto &player : gameController.players)
         {
             ViewMap();
-            Console::Log(player->Info());
             player->Move(map);
-            std::cout << std::endl;
             if (GameOver::End(map))
+            {
+                GameOver::Victory(player);
                 break;
+            }
+            else if(map.IsFull())
+                GameOver::Draw();
         }
     }
-
-    ViewMap();
-    GameOver::Victory();
 }
 
 void TicTacToe::Start()
