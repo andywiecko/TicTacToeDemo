@@ -3,46 +3,22 @@
 
 #include <iostream>
 
+#include "../Players/Player.hpp"
 #include "../GameMap/GameMap.hpp"
+#include "../GameMap/MapViewer.hpp"
 
 class GameOver
 {
 private:
-    static bool CheckCondition(GameMap &map, const Pairs &cond)
-    {
-        const Pair pair = cond.at(0);
-        Field field = map.GetField(pair);
-        if (field == Field::_)
-            return false;
-
-        for (auto &_pair : cond)
-        {
-            if (field != map.GetField(_pair))
-                return false;
-        }
-        return true;
-    }
+    static bool CheckCondition(GameMap &map, const Pairs &cond);
+    static void Victory(IPlayer *player);
+    static void Draw();
 
 public:
-    static bool End(GameMap map)
-    {
-        for (auto &cond : GameMap::victoryConditions)
-        {
-            if (CheckCondition(map, cond))
-                return true;
-        }
-        return false;
-    }
-
-    static void Victory(IPlayer * player)
-    {
-        Console::Log("Winner: "+player->Info());
-    }
-
-    static void Draw()
-    {
-        Console::Log("Draw! There is no winner!");
-    }
+    static bool End(GameMap map);
+    static bool HasFinished(GameMap map);
+    static bool HasFinished(GameMap map, IPlayer *player);
+    
 };
 
 #endif
