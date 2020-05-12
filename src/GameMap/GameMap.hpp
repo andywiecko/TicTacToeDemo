@@ -27,6 +27,12 @@ public:
     Field GetField(size_t row, size_t col);
     Field GetField(Pair pair);
     bool IsFull();
+    Field &GetFirstField();
+
+    // iterators "foreach field"
+    Field *begin();
+    Field *end();
+    
 };
 
 #endif

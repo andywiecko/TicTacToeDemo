@@ -21,7 +21,8 @@ bool GameMap::IsFull()
 {
     for (auto &fieldsRow : fields)
         for (auto &field : fieldsRow)
-            if (field == Field::_) return false;
+            if (field == Field::_)
+                return false;
 
     return true; // map does not contain Field::_
 }
@@ -57,6 +58,21 @@ Field GameMap::GetField(Pair pair)
     int row = pair.at(0);
     int col = pair.at(1);
     return GetField(row, col);
+}
+
+Field &GameMap::GetFirstField()
+{
+    return *fields.front().begin();
+}
+
+Field *GameMap::begin()
+{
+    return fields.front().begin();
+}
+
+Field *GameMap::end()
+{
+    return fields.back().end();
 }
 
 // TODO auto filler
