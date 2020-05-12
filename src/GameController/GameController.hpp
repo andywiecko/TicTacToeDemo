@@ -19,15 +19,15 @@ public: // make private
     void PvPMode()
     {
         players = {
-            new Players::Human{Field::O, "Player 1"},
-            new Players::Human{Field::X, "Player 2"}};
+            new Player::Human{Field::O, "Player 1"},
+            new Player::Human{Field::X, "Player 2"}};
     }
 
     void PvCMode()
     {
         players = {
-            new Players::Human{Field::O, "Player 1"},
-            new Players::Computer{Field::X}};
+            new Player::Human{Field::O, "Player 1"},
+            new Player::Computer{Field::X}};
     }
 
 public:
