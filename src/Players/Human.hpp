@@ -7,7 +7,7 @@
 #include "../GameMap/GameMap.hpp"
 #include "../Misc/Console.hpp"
 
-namespace Players
+namespace Player
 {
 
     class Human : virtual public IPlayer

@@ -6,7 +6,7 @@
 #include "IPlayer.hpp"
 #include "../GameMap/GameMap.hpp"
 
-namespace Players
+namespace Player
 {
 
     class Computer : virtual public IPlayer
@@ -20,9 +20,8 @@ namespace Players
         {
             SetField(_field);
         }
-
     };
 
-} // namespace Players
+} // namespace Player
 
 #endif
