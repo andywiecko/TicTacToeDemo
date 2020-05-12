@@ -4,7 +4,9 @@ VERB=-Wall -Werror -Wpedantic
 
 # objects
 OBJSRC=$(wildcard src/*.cpp\
-				  src/*/*.cpp)
+				  src/*/*.cpp\
+				  src/*/*/*.cpp)
+				  
 OBJ=$(OBJSRC:.cpp=.o)
 
 main.exe: main.cpp ${OBJ}

@@ -8,14 +8,21 @@ void TicTacToe::GameLoop()
         {
             MapViewer::View(map);
             player->Move(map);
-            if (GameOver::HasFinished(map,player))
+            if (GameOver::HasFinished(map, player))
                 break;
         }
     }
 }
 
+#include "Players/AI/Minimax.hpp"
+
 void TicTacToe::Start()
 {
     gameController.SelectGameMode(GameMode::PvP);
-    GameLoop();
+
+    map.Print();
+    Minimax::Move(map);
+    map.Print();
+
+    //GameLoop();
 }
