@@ -14,15 +14,9 @@ void TicTacToe::GameLoop()
     }
 }
 
-#include "Players/AI/Minimax.hpp"
 
 void TicTacToe::Start()
 {
-    gameController.SelectGameMode(GameMode::PvP);
-
-    map.Print();
-    Minimax::Move(map);
-    map.Print();
-
-    //GameLoop();
+    gameController.SelectGameMode(GameMode::PvC);
+    GameLoop();
 }

@@ -24,6 +24,7 @@ public:
     GameMap();
     void Print();
     bool SetField(Field field, size_t row, size_t col);
+    bool SetField(Field field, size_t index);
     Field GetField(size_t row, size_t col);
     Field GetField(Pair pair);
     bool IsFull();

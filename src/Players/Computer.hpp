@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "IPlayer.hpp"
+#include "AI/Minimax.hpp"
 #include "../GameMap/GameMap.hpp"
 
 namespace Player
@@ -14,6 +15,7 @@ namespace Player
     public:
         virtual void Move(GameMap &map)
         {
+            Minimax::Move(map);
         }
 
         Computer(Field _field)

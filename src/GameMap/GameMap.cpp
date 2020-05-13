@@ -48,6 +48,25 @@ bool GameMap::SetField(Field field, size_t row, size_t col)
     return false;
 }
 
+bool GameMap::SetField(Field field, size_t index)
+{
+    // TODO: optimize
+    size_t i = 0;
+    for (auto &row : fields)
+    {
+        for(auto & _field: row)
+        {
+            if(index == i)
+            {
+                _field = field;
+                return true;
+            }
+            i++;
+        }
+    }
+    return false;
+}
+
 Field GameMap::GetField(size_t row, size_t col)
 {
     return fields.at(row).at(col);

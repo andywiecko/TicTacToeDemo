@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "../Players/Player.hpp"
+#include "../Players/IPlayer.hpp"
 #include "../GameMap/GameMap.hpp"
 #include "../GameMap/MapViewer.hpp"
 
