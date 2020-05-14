@@ -17,6 +17,6 @@ void TicTacToe::GameLoop()
 
 void TicTacToe::Start()
 {
-    gameController.SelectGameMode(GameMode::PvC);
+    gameController.SelectGameMode(GameMode::CvC);
     GameLoop();
 }
