@@ -2,14 +2,14 @@
 
 std::ostream &operator<<(std::ostream &out, Field field)
 {
-    std::string outString{"[ ]"};
+    std::string outString{FieldConverter::Convert(Field::_)};
     switch (field)
     {
     case Field::O:
-        outString = FieldConverter::ConvertWithFrame(Field::O);
+        outString = FieldConverter::Convert(Field::O);
         break;
     case Field::X:
-        outString = FieldConverter::ConvertWithFrame(Field::X);
+        outString = FieldConverter::Convert(Field::X);
         break;
     default:
         break;

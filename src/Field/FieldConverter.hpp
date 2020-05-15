@@ -13,7 +13,6 @@ private:
 
 public:
     static std::string Convert(Field field);
-    static std::string ConvertWithFrame(Field field);
 
 };
 
