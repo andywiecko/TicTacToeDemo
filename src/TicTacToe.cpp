@@ -12,11 +12,16 @@ void TicTacToe::GameLoop()
                 break;
         }
     }
+    map.Clear();
 }
-
 
 void TicTacToe::Start()
 {
-    gameController.SelectGameMode(GameMode::CvC);
-    GameLoop();
+    Console::Clear();
+    menu.Menu();
+    while (not menu.Exit())
+    {
+        GameLoop();
+        menu.Menu();
+    }
 }

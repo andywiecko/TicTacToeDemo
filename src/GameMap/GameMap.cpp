@@ -2,6 +2,11 @@
 
 GameMap::GameMap()
 {
+    Clear();
+}
+
+void GameMap::Clear()
+{
     fields = {{{Field::_, Field::_, Field::_},
                {Field::_, Field::_, Field::_},
                {Field::_, Field::_, Field::_}}};
@@ -12,7 +17,7 @@ void GameMap::Print()
     for (auto &fieldsRow : fields)
     {
         for (auto &field : fieldsRow)
-            std::cout << field << " ";
+            std::cout << "[" << field << "] ";
         std::cout << std::endl;
     }
 }
@@ -54,9 +59,9 @@ bool GameMap::SetField(Field field, size_t index)
     size_t i = 0;
     for (auto &row : fields)
     {
-        for(auto & _field: row)
+        for (auto &_field : row)
         {
-            if(index == i)
+            if (index == i)
             {
                 _field = field;
                 return true;

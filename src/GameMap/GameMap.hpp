@@ -22,6 +22,7 @@ private:
 
 public:
     GameMap();
+    void Clear();
     void Print();
     bool SetField(Field field, size_t row, size_t col);
     bool SetField(Field field, size_t index);
