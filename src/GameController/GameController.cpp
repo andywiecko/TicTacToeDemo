@@ -7,11 +7,11 @@ void GameController::PvPMode()
         new Player::Human{Field::X, "Player 2"}};
 }
 
-void GameController::PvCMode()
+void GameController::PvCMode(Player::Level level)
 {
     players = {
         new Player::Human{Field::O, "Player 1"},
-        new Player::Computer{Field::X, players}};
+        new Player::Computer{Field::X, players, level}};
 }
 
 void GameController::CvCMode()
@@ -23,14 +23,19 @@ void GameController::CvCMode()
 
 void GameController::SelectGameMode(GameMode gameMode)
 {
+    DeletePlayers();
     switch (gameMode)
     {
     case GameMode::PvP:
         PvPMode();
         break;
 
-    case GameMode::PvC:
-        PvCMode();
+    case GameMode::PvC_EASY:
+        PvCMode(Player::Level::Easy);
+        break;
+
+    case GameMode::PvC_NORMAL:
+        PvCMode(Player::Level::Normal);
         break;
 
     case GameMode::CvC:
@@ -38,12 +43,19 @@ void GameController::SelectGameMode(GameMode gameMode)
         break;
 
     default:
+        Console::Log("Not implemented or invalid GameMode");
         break;
     }
 }
 
-GameController::~GameController()
+void GameController::DeletePlayers()
 {
     for (auto player : players)
         delete player;
+    players.clear();
+}
+
+GameController::~GameController()
+{
+    DeletePlayers();
 }

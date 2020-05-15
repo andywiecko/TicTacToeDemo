@@ -8,19 +8,21 @@
 enum class GameMode
 {
     PvP,
-    PvC,
+    PvC_EASY,
+    PvC_NORMAL,
     CvC
 };
 
 class GameController
 {
-public: // make private
-    std::vector<IPlayer *> players;
-    void PvPMode();
-    void PvCMode();
-    void CvCMode();
+private:
+    void DeletePlayers();
 
 public:
+    std::vector<IPlayer *> players;
+    void PvPMode();
+    void PvCMode(Player::Level level);
+    void CvCMode();
     void SelectGameMode(GameMode gameMode);
     ~GameController();
 };

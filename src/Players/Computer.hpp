@@ -6,21 +6,30 @@
 
 #include "IPlayer.hpp"
 #include "AI/Minimax.hpp"
+#include "AI/Random.hpp"
 #include "AI/PlayersInfo.hpp"
 #include "../GameMap/GameMap.hpp"
 
 namespace Player
 {
+
+    enum class Level
+    {
+        Easy,
+        Normal
+    };
+
     class Computer : virtual public IPlayer
     {
     private:
         PlayersInfo players;
         std::vector<IPlayer *> &activePlayers; // reference to active players in game
-        
+        Level level;
+
         void ReadPlayers()
         {
             std::vector<Field> fields;
-            for(auto player : activePlayers)
+            for (auto player : activePlayers)
             {
                 Field field = player->GetField();
                 if (field != this->GetField())
@@ -31,18 +40,40 @@ namespace Player
             players = {GetField(), fields};
         }
 
-    public:
-        virtual void Move(GameMap &map)
+        void Easy(GameMap &map)
+        {
+            Random random{map, GetField()};
+            random.Move();
+        }
+
+        void Normal(GameMap &map)
         {
             ReadPlayers(); // player number may differ during the game
             Minimax minimax{map, players};
             minimax.Move();
         }
 
-        Computer(Field _field, std::vector<IPlayer *> &_activePlayers)
-            : activePlayers{_activePlayers}
+    public:
+        virtual void Move(GameMap &map)
+        {
+            switch (level)
+            {
+            case Level::Normal:
+                Normal(map);
+                break;
+            case Level::Easy:
+                Easy(map);
+                break;
+            default:
+                break;
+            }
+        }
+
+        Computer(Field _field, std::vector<IPlayer *> &_activePlayers, Level _level = Level::Normal)
+            : activePlayers{_activePlayers}, level{_level}
         {
             SetField(_field);
+            SetName("Computer");
         }
     };
 
