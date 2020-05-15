@@ -26,55 +26,15 @@ namespace Player
         std::vector<IPlayer *> &activePlayers; // reference to active players in game
         Level level;
 
-        void ReadPlayers()
-        {
-            std::vector<Field> fields;
-            for (auto player : activePlayers)
-            {
-                Field field = player->GetField();
-                if (field != this->GetField())
-                {
-                    fields.push_back(field);
-                }
-            }
-            players = {GetField(), fields};
-        }
-
-        void Easy(GameMap &map)
-        {
-            Random random{map, GetField()};
-            random.Move();
-        }
-
-        void Normal(GameMap &map)
-        {
-            ReadPlayers(); // player number may differ during the game
-            Minimax minimax{map, players};
-            minimax.Move();
-        }
+        void ReadPlayers();
+        void Easy(GameMap &map);
+        void Normal(GameMap &map);
 
     public:
-        virtual void Move(GameMap &map)
-        {
-            switch (level)
-            {
-            case Level::Normal:
-                Normal(map);
-                break;
-            case Level::Easy:
-                Easy(map);
-                break;
-            default:
-                break;
-            }
-        }
-
-        Computer(Field _field, std::vector<IPlayer *> &_activePlayers, Level _level = Level::Normal)
-            : activePlayers{_activePlayers}, level{_level}
-        {
-            SetField(_field);
-            SetName("Computer");
-        }
+        virtual void Move(GameMap &map);
+        Computer(Field _field,
+                 std::vector<IPlayer *> &_activePlayers,
+                 Level _level = Level::Normal);
     };
 
 } // namespace Player
