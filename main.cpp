@@ -2,6 +2,7 @@
 
 int main()
 {
+    srand( time( NULL ) );
     TicTacToe game;
     game.Start();
 }
